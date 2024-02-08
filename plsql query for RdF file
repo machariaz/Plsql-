@@ -1,0 +1,13 @@
+SELECT
+    pp.person_id,
+    pp.employee_number,
+    pp.full_name,
+    paf.job_id,
+    paf.position_id
+FROM
+    per_all_people_f pp,
+    per_all_assignments_f paf
+WHERE
+    pp.person_id = paf.person_id
+    AND sysdate BETWEEN pp.effective_start_date AND pp.effective_end_date
+    AND sysdate BETWEEN paf.effective_start_date AND paf.effective_end_date;
